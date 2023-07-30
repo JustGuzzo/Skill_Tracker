@@ -31,6 +31,10 @@
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.TablePanel = new System.Windows.Forms.TableLayoutPanel();
 			this.AddButton = new System.Windows.Forms.Button();
+			this.SaveButton = new System.Windows.Forms.Button();
+			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+			this.button1 = new System.Windows.Forms.Button();
+			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -39,6 +43,8 @@
 			this.panel1.AutoSize = true;
 			this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.panel1.BackColor = System.Drawing.SystemColors.Control;
+			this.panel1.Controls.Add(this.button1);
+			this.panel1.Controls.Add(this.SaveButton);
 			this.panel1.Controls.Add(this.TablePanel);
 			this.panel1.Controls.Add(this.AddButton);
 			this.panel1.Location = new System.Drawing.Point(13, 13);
@@ -49,9 +55,10 @@
 			// TablePanel
 			// 
 			this.TablePanel.AutoScroll = true;
-			this.TablePanel.ColumnCount = 3;
+			this.TablePanel.ColumnCount = 4;
 			this.TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+			this.TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
+			this.TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
 			this.TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
 			this.TablePanel.Location = new System.Drawing.Point(3, 4);
 			this.TablePanel.Name = "TablePanel";
@@ -70,6 +77,36 @@
 			this.AddButton.Text = "ADD";
 			this.AddButton.UseVisualStyleBackColor = true;
 			this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+			// 
+			// SaveButton
+			// 
+			this.SaveButton.Location = new System.Drawing.Point(127, 466);
+			this.SaveButton.Name = "SaveButton";
+			this.SaveButton.Size = new System.Drawing.Size(107, 23);
+			this.SaveButton.TabIndex = 4;
+			this.SaveButton.Text = "SAVE";
+			this.SaveButton.UseVisualStyleBackColor = true;
+			this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+			// 
+			// saveFileDialog1
+			// 
+			this.saveFileDialog1.DefaultExt = "txt";
+			this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(240, 466);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(95, 23);
+			this.button1.TabIndex = 5;
+			this.button1.Text = "OPEN";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// openFileDialog1
+			// 
+			this.openFileDialog1.FileName = "openFileDialog1";
+			this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
 			// 
 			// Form1
 			// 
@@ -90,6 +127,10 @@
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Button AddButton;
 		private System.Windows.Forms.TableLayoutPanel TablePanel;
+		private System.Windows.Forms.Button SaveButton;
+		private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.OpenFileDialog openFileDialog1;
 	}
 }
 
