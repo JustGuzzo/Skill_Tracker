@@ -17,7 +17,9 @@ namespace Skill_Tracker
 
 		List<int> TasksValueList = new List<int>();
 
-		string default_save_path = Directory.GetCurrentDirectory() + "/data.txt";
+		string default_save_path = Directory.GetCurrentDirectory() + "/data.st";
+
+		string save_path;
 
 		int maximum_progress_bar_value = 0;
 		int task_button_position_in_table = 0;
@@ -25,12 +27,18 @@ namespace Skill_Tracker
 		int delete_task_button_position_in_table = 2;
 		int progress_bar_position_in_table = 3;
 
+		int maximum_task_name_length = 23;
+		int offset = 5;
+
 		public MainForm()
 		{
 			InitializeComponent();
 			maximum_progress_bar_value = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
 
 			ReadFile(default_save_path);
+
+			saveFileDialog1.InitialDirectory = openFileDialog1.InitialDirectory = Directory.GetCurrentDirectory();
+			saveFileDialog1.RestoreDirectory = openFileDialog1.RestoreDirectory = true;
 		}
 
 		private void GenerateNewTable()
@@ -42,7 +50,7 @@ namespace Skill_Tracker
 				Button button = new Button()
 				{
 					Text = TasksNameList[i],
-					Width = 150
+					MinimumSize = new Size((maximum_task_name_length + offset) * 5, 20),
 				};
 
 				Button button_minus = new Button()
@@ -70,6 +78,10 @@ namespace Skill_Tracker
 				if (TablePanel.RowCount < i) TablePanel.RowCount += 1;
 
 				TablePanel.Controls.Add(button, task_button_position_in_table, i);
+				var styles = TablePanel.ColumnStyles;
+				styles[0].SizeType = SizeType.Absolute;
+				styles[0].Width = (maximum_task_name_length + offset) * 5
+					;
 				TablePanel.Controls.Add(button_minus, minus_button_position_in_table, i);
 				TablePanel.Controls.Add(delete, delete_task_button_position_in_table, i);
 				TablePanel.Controls.Add(bar, progress_bar_position_in_table, i);
@@ -149,7 +161,7 @@ namespace Skill_Tracker
 
 		private void addNewTaskToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			AddTaskForm popup_window = new AddTaskForm();
+			AddTaskForm popup_window = new AddTaskForm(maximum_task_name_length);
 			popup_window.Tasks = TasksNameList;
 
 			if (popup_window.ShowDialog() == DialogResult.OK)
@@ -214,7 +226,7 @@ namespace Skill_Tracker
 
 		private void editTasksToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			EditTasksForm popup_window = new EditTasksForm();
+			EditTasksForm popup_window = new EditTasksForm(maximum_task_name_length);
 			popup_window.TaskNames = TasksNameList;
 			popup_window.GenerateTable();
 

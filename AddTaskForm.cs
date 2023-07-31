@@ -14,9 +14,10 @@ namespace Skill_Tracker
 	{
 		public List<string> Tasks = new List<string>();
 
-		public AddTaskForm()
+		public AddTaskForm(int maximum_task_name_length)
 		{
 			InitializeComponent();
+			Item_Name.MaxLength = maximum_task_name_length;
 		}
 
 		public string TaskName

@@ -15,10 +15,13 @@ namespace Skill_Tracker
 		public List<string> TaskNames = new List<string>();
 
 		int task_name_position_in_table = 0;
+		int maximum_task_name_length;
+		int offset = 5;
 
-		public EditTasksForm()
+		public EditTasksForm(int _maximum_task_name_length)
 		{
 			InitializeComponent();
+			maximum_task_name_length = _maximum_task_name_length;
 		}
 
 		public void GenerateTable()
@@ -29,7 +32,9 @@ namespace Skill_Tracker
 			{
 				TextBox text = new TextBox()
 				{
-					Text = TaskNames[i]
+					Text = TaskNames[i],
+					MaxLength = maximum_task_name_length,
+					MinimumSize = new Size((maximum_task_name_length + offset) * 10, 20),
 				};
 
 				if (TablePanel.RowCount < i) TablePanel.RowCount += 1;

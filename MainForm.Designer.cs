@@ -46,39 +46,49 @@
 			// 
 			// panel1
 			// 
-			this.panel1.AutoSize = true;
+			this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.panel1.BackColor = System.Drawing.SystemColors.Control;
 			this.panel1.Controls.Add(this.TablePanel);
 			this.panel1.Location = new System.Drawing.Point(10, 27);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(714, 463);
+			this.panel1.Size = new System.Drawing.Size(562, 322);
 			this.panel1.TabIndex = 0;
 			// 
 			// TablePanel
 			// 
+			this.TablePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.TablePanel.AutoScroll = true;
 			this.TablePanel.ColumnCount = 4;
-			this.TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-			this.TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-			this.TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-			this.TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-			this.TablePanel.Location = new System.Drawing.Point(3, 0);
+			this.TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+			this.TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.25F));
+			this.TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.25F));
+			this.TablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.5F));
+			this.TablePanel.Location = new System.Drawing.Point(3, 3);
 			this.TablePanel.Name = "TablePanel";
 			this.TablePanel.RowCount = 2;
 			this.TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.TablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.TablePanel.Size = new System.Drawing.Size(708, 460);
+			this.TablePanel.Size = new System.Drawing.Size(556, 316);
 			this.TablePanel.TabIndex = 3;
 			// 
 			// saveFileDialog1
 			// 
-			this.saveFileDialog1.DefaultExt = "txt";
+			this.saveFileDialog1.DefaultExt = "st";
+			this.saveFileDialog1.Filter = "Skill Tracker files (*.st)|*.st";
+			this.saveFileDialog1.RestoreDirectory = true;
 			this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
 			// 
 			// openFileDialog1
 			// 
-			this.openFileDialog1.FileName = "openFileDialog1";
+			this.openFileDialog1.DefaultExt = "st";
+			this.openFileDialog1.Filter = "Skill Tracker files (*.st)|*.st";
+			this.openFileDialog1.InitialDirectory = ".";
+			this.openFileDialog1.RestoreDirectory = true;
 			this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
 			// 
 			// menuStrip1
@@ -88,7 +98,7 @@
             this.tasksToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(839, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(584, 24);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -150,10 +160,11 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(839, 601);
+			this.ClientSize = new System.Drawing.Size(584, 361);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
+			this.MinimumSize = new System.Drawing.Size(600, 400);
 			this.Name = "MainForm";
 			this.Text = "Skill Tracker";
 			this.panel1.ResumeLayout(false);
