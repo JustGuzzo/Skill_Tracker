@@ -1,6 +1,6 @@
 ﻿namespace Skill_Tracker
 {
-	partial class Form2
+	partial class AddTaskForm
 	{
 		/// <summary>
 		/// Required designer variable.

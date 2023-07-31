@@ -10,23 +10,24 @@ using System.Windows.Forms;
 
 namespace Skill_Tracker
 {
-	public partial class Form2 : Form
+	public partial class AddTaskForm : Form
 	{
-		public List<string> Items = new List<string>();
+		public List<string> Tasks = new List<string>();
 
-		public Form2()
+		public AddTaskForm()
 		{
 			InitializeComponent();
 		}
 
-		public string ItemName
+		public string TaskName
 		{
 			get { return Item_Name.Text; }
+			set { Item_Name.Text = value; }
 		}
 
 		private void Item_Name_TextChanged(object sender, EventArgs e)
 		{
-			if (Item_Name.Text.Length > 0 && !Items.Contains(Item_Name.Text))
+			if (Item_Name.Text.Length > 0 && !Tasks.Contains(Item_Name.Text))
 			{
 				AddButton.Enabled = true;
 			}
@@ -35,7 +36,7 @@ namespace Skill_Tracker
 				AddButton.Enabled = false;
 			}
 
-			if (Items.Contains(Item_Name.Text))
+			if (Tasks.Contains(Item_Name.Text))
 			{
 				Error_Item_Exist.SetError(Item_Name, "This item exit in your ToDo list!");
 			}
