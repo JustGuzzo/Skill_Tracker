@@ -35,7 +35,18 @@ namespace Skill_Tracker
 			InitializeComponent();
 			maximum_progress_bar_value = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
 
-			ReadFile(default_save_path);
+			JSONFileManager jsonFM = new JSONFileManager(default_save_path);
+			List<TaskData> td = jsonFM.LoadTasksFromFile();
+
+			if (td == null || td.Count() == 0) return;
+
+			foreach (TaskData task in td)
+			{
+				TasksNameList.Add(task.Name);
+				TasksValueList.Add(task.Value);
+			}
+
+			GenerateNewTable();
 
 			saveFileDialog1.InitialDirectory = openFileDialog1.InitialDirectory = Directory.GetCurrentDirectory();
 			saveFileDialog1.RestoreDirectory = openFileDialog1.RestoreDirectory = true;
@@ -199,7 +210,21 @@ namespace Skill_Tracker
 		{
 			string path = saveFileDialog1.FileName;
 
-			string data = "";
+			JSONFileManager jsonFM = new JSONFileManager(path);
+			List<TaskData> tasks = new List<TaskData>();
+
+			for (int i = 0; i < TasksNameList.Count; i++)
+			{
+				tasks.Add(new TaskData(
+					_name: TasksNameList[i],
+					_value: TasksValueList[i]
+					));
+			}
+
+				jsonFM.SaveTasksToFile(tasks);
+
+
+			/*string data = "";
 			for (int i = 0; i < TasksNameList.Count; i++)
 			{
 				string line = TasksNameList[i].ToString() + ":" + TasksValueList[i].ToString() + "\n";
@@ -207,7 +232,7 @@ namespace Skill_Tracker
 				data += line;
 			}
 
-			File.WriteAllText(path, data);
+			File.WriteAllText(path, data);*/
 		}
 
 		private void openAnotherTaskListToolStripMenuItem_Click(object sender, EventArgs e)
@@ -221,7 +246,18 @@ namespace Skill_Tracker
 			TasksValueList.Clear();
 
 			string path = openFileDialog1.FileName;
-			ReadFile(path);
+			JSONFileManager jsonFM = new JSONFileManager(path);
+			List<TaskData> td = jsonFM.LoadTasksFromFile();
+
+			if (td.Count == 0) return;
+
+			foreach (TaskData task in td)
+			{
+				TasksNameList.Add(task.Name);
+				TasksValueList.Add(task.Value);
+			}
+
+			GenerateNewTable();
 		}
 
 		private void editTasksToolStripMenuItem_Click(object sender, EventArgs e)
